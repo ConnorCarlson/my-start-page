@@ -13,6 +13,7 @@
   crossorigin="anonymous"></script>
     <style>
       @import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400');
+      @import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
       @import url('https://rsms.me/inter/inter-ui.css');
       html,body{
         margin:0 0;
@@ -40,13 +41,14 @@
         color:#222;
         text-align:center;
         font-size:120px;
-        font-family: 'Ubuntu';
+        font-family: 'Roboto';
         font-weight:300;
         display:none;
       }
 
       .icons .fa{
         color:#222;
+        transition: color .4s;
         padding:0 30px;
       }
 
@@ -68,7 +70,7 @@
         width:0%;
         height:100%;
         border:none;
-        color:#444;
+        color:#a8a8a8;
         border-color:#444;
         border-top-style:solid;
         border-width:1px;
@@ -81,7 +83,8 @@
       input[type='text']{
         text-align: center;
         font-size: 50px;
-        font-family: 'Inter UI';
+        font-family: 'Roboto';
+        font-weight: 50;
       }
 
       ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -148,10 +151,11 @@
         p{
           font-size:110px;
         }
-
+/*
         #date{
           font-size:25px;
         }
+        */
       }
     </style>
   </head>
@@ -159,13 +163,12 @@
 
     <script>
     $(document).ready(() =>{
-      $('a').fadeIn(1000);
-      $('p').fadeIn(1000);
+      $('a').fadeIn(400);
+      $('p').fadeIn(400);
       $('.line').fadeIn(450);
       $('input').fadeIn(450);
       $('.line').animate({width: '50%'});
       $('input').animate({width: '100%'});
-
     });
     </script>
 
@@ -183,10 +186,32 @@
               let a = month[d.getMonth()];
 
               document.getElementById("date").innerHTML = n + ", " + day + " " + a;
-              if(m<10){
-                document.getElementById("time").innerHTML = h + ":0" + m;
+              if(h == 12){
+                if(m<10){
+                  document.getElementById("time").innerHTML = h + ":0" + m + " PM";
+                } else {
+                  document.getElementById("time").innerHTML = h + ":" + m + " PM";
+                }
+              }
+              else if (h == 24) {
+                if(m<10){
+                  document.getElementById("time").innerHTML = h-12 + ":0" + m + " AM";
+                } else {
+                  document.getElementById("time").innerHTML = h-12 + ":" + m + " AM";
+                }
+              }
+              else if (h>12) {
+                if(m<10){
+                  document.getElementById("time").innerHTML = h-12 + ":0" + m + " PM";
+                } else {
+                  document.getElementById("time").innerHTML = h-12 + ":" + m + " PM";
+                }
               } else {
-                document.getElementById("time").innerHTML = h + ":" + m;
+                if(m<10){
+                  document.getElementById("time").innerHTML = h + ":0" + m + " AM";
+                } else {
+                  document.getElementById("time").innerHTML = h + ":" + m + " AM";
+                }
               }
               setTimeout(() =>{
                 time();
