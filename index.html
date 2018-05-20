@@ -24,7 +24,6 @@
         justify-content: center;
       }
 
-
       .icons{
         width:40%;
         margin:0 auto;
@@ -49,7 +48,7 @@
       .icons .fa{
         color:#222;
         transition: color .4s;
-        padding:0 30px;
+        padding:0 20px;
       }
 
       .icons .fa:hover{
@@ -193,11 +192,11 @@
                   document.getElementById("time").innerHTML = h + ":" + m + " PM";
                 }
               }
-              else if (h == 24) {
+              else if (h == 0) {
                 if(m<10){
-                  document.getElementById("time").innerHTML = h-12 + ":0" + m + " AM";
+                  document.getElementById("time").innerHTML = 12 + ":0" + m + " AM";
                 } else {
-                  document.getElementById("time").innerHTML = h-12 + ":" + m + " AM";
+                  document.getElementById("time").innerHTML = 12 + ":" + m + " AM";
                 }
               }
               else if (h>12) {
@@ -237,16 +236,17 @@
       <a href="https://facebook.com/">
         <i class="fa fa-facebook fa-4x" aria-hidden="true"></i>
       </a>
-
       <a href="https://gmail.com">
         <i class="fa fa-envelope fa-4x" aria-hidden="true"></i>
       </a>
-
       <a href="https://reddit.com">
         <i class="fa fa-reddit fa-4x" aria-hidden="true"></i>
       </a>
       <a href="https://github.com">
         <i class="fa fa-github fa-4x" aria-hidden="true"></i>
+      </a>
+      <a href="https://smile.amazon.com/ref=nav_logo">
+        <i class="fa fa-amazon fa-4x" aria-hidden="true"></i>
       </a>
     </div>
 
