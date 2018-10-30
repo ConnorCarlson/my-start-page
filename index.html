@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<!-- Starting page -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>New Tab</title>
+    <link rel="icon" type="image/x-icon" href="title-icon.png">
+    <link rel="stylesheet" href="font-awesome-4.7.0\css\font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400');
+      @import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+      @import url('https://rsms.me/inter/inter-ui.css');
+      html,body{
+        margin:0 0;
+        width:100%;
+        height:100%;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .icons{
+        width:40%;
+        margin:0 auto;
+        display:none;
+        display:flex;
+        flex-direction:row;
+        justify-content: center;
+        padding:10px;
+      }
+
+      p{
+        margin:0 0;
+        padding:0 0;
+        color:#222;
+        text-align:center;
+        font-size:120px;
+        font-family: 'Roboto';
+        font-weight:300;
+        display:none;
+      }
+
+      .icons .fa{
+        color:#222;
+        transition: color .4s;
+        padding:0 20px;
+      }
+
+      .icons .fa:hover{
+        color:#444444;
+      }
+
+      a{
+        display:none;
+      }
+      form{
+        width:40%;
+        margin:0 auto;
+
+      }
+
+      .searchbox{
+        text-align: center;
+        width:0%;
+        height:100%;
+        border:none;
+        color:#a8a8a8;
+        border-color:#444;
+        border-top-style:solid;
+        border-width:1px;
+        text-indent:10px;
+        display:none;
+        margin:0 auto;
+        margin-top:20px;
+      }
+
+      input[type='text']{
+        text-align: center;
+        font-size: 50px;
+        font-family: 'Roboto';
+        font-weight: 50;
+      }
+
+      ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #AAA;
+      }
+      ::-moz-placeholder { /* Firefox 19+ */
+          color: #AAA;
+      }
+      :-ms-input-placeholder { /* IE 10+ */
+        color: #AAA;
+      }
+      :-moz-placeholder { /* Firefox 18- */
+        color: #AAA;
+      }
+
+      .searchbox:focus{
+        outline:none;
+      }
+
+      #date{
+        font-size:35px;
+        font-weight:300;
+      }
+
+      .line{
+        background-color:#222;
+        height:1px;
+        width:0%;
+        margin:20px auto;
+        display:none;
+      }
+
+      @media only screen and (max-width: 1200px) {
+        .fa-4x{
+          font-size: 3em;
+        }
+      }
+
+      @media only screen and (max-width: 776px) {
+        .fa-4x{
+          font-size: 2.7em;
+        }
+
+        input{
+          display:none;
+        }
+        form{
+          display:none;
+        }
+      }
+
+      @media only screen and (max-width: 500px) {
+        .fa-4x{
+          font-size: 2.4em;
+        }
+
+        input{
+          display:none;
+        }
+        form{
+          display:none;
+        }
+
+        p{
+          font-size:110px;
+        }
+/*
+        #date{
+          font-size:25px;
+        }
+        */
+      }
+    </style>
+  </head>
+  <body>
+
+    <script>
+    $(document).ready(() =>{
+      $('a').fadeIn(400);
+      $('p').fadeIn(400);
+      $('.line').fadeIn(450);
+      $('input').fadeIn(450);
+      $('.line').animate({width: '50%'});
+      $('input').animate({width: '100%'});
+    });
+    </script>
+
+
+    <script>
+        window.onload = () => {
+          function time(){
+              let d = new Date();
+              let m = d.getMinutes();
+              let h = d.getHours();
+              let weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+              let n = weekday[d.getDay()];
+              let month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+              let day = d.getDate();
+              let a = month[d.getMonth()];
+
+              document.getElementById("date").innerHTML = n + ", " + day + " " + a;
+              if(h == 12){
+                if(m<10){
+                  document.getElementById("time").innerHTML = h + ":0" + m + " PM";
+                } else {
+                  document.getElementById("time").innerHTML = h + ":" + m + " PM";
+                }
+              }
+              else if (h == 0) {
+                if(m<10){
+                  document.getElementById("time").innerHTML = 12 + ":0" + m + " AM";
+                } else {
+                  document.getElementById("time").innerHTML = 12 + ":" + m + " AM";
+                }
+              }
+              else if (h>12) {
+                if(m<10){
+                  document.getElementById("time").innerHTML = h-12 + ":0" + m + " PM";
+                } else {
+                  document.getElementById("time").innerHTML = h-12 + ":" + m + " PM";
+                }
+              } else {
+                if(m<10){
+                  document.getElementById("time").innerHTML = h + ":0" + m + " AM";
+                } else {
+                  document.getElementById("time").innerHTML = h + ":" + m + " AM";
+                }
+              }
+              setTimeout(() =>{
+                time();
+              }, 60);
+            };
+          time();
+        };
+      </script>
+
+
+    <div class="date">
+      <p id="time"></p>
+      <p id="date"></p>
+    </div>
+    <div class="line"></div>
+    <div class="icons">
+      <a href="https://canvas.uw.edu/">
+        <i class="fa fa-graduation-cap fa-4x" aria-hidden="true"></i>
+      </a>
+      <a href="https://myuw.washington.edu/">
+        <i class="fa fa-university fa-4x" aria-hidden="true"></i>
+      </a>
+      <a href="https://facebook.com/">
+        <i class="fa fa-facebook fa-4x" aria-hidden="true"></i>
+      </a>
+      <a href="https://gmail.com">
+        <i class="fa fa-envelope fa-4x" aria-hidden="true"></i>
+      </a>
+      <a href="https://reddit.com">
+        <i class="fa fa-reddit fa-4x" aria-hidden="true"></i>
+      </a>
+      <a href="https://github.com">
+        <i class="fa fa-github fa-4x" aria-hidden="true"></i>
+      </a>
+      <a href="https://smile.amazon.com/ref=nav_logo">
+        <i class="fa fa-amazon fa-4x" aria-hidden="true"></i>
+      </a>
+      <a href="https://drive.google.com/drive/u/0/my-drive">
+        <i class="fab fa-google-drive" aria-hidden="true"></i>
+      </a>
+    </div>
+
+    <form method="get" action="https://www.google.com/search">
+      <input class="searchbox" type="text" name="q" size="31" value="" placeholder="" autofocus>
+    </form>
+
+  </body>
+</html>
